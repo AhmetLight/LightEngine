@@ -107,7 +107,7 @@ BenimMotor/
 ### 1. Build and Run the Editor
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/LightEngine.git
+git clone https://github.com/AhmetLight/LightEngine.git
 cd LightEngine
 
 # Build in Release mode
