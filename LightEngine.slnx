@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Game/Game.csproj" />
+  <Project Path="LightEngine.Core/LightEngine.Core.csproj" />
+  <Project Path="LightEngine.Editor/LightEngine.Editor.csproj" />
+  <Project Path="LightEngine.Tests/LightEngine.Tests.csproj" />
+</Solution>

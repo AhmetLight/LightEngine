@@ -1,0 +1,45 @@
+name: CI - Build & Test Suite
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build-and-test:
+    name: Build & Verify (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Setup .NET 9.0 SDK
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '9.0.x'
+
+    - name: Install Linux Dependencies (OpenGL, OpenAL, SDL2)
+      if: runner.os == 'Linux'
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libgl1-mesa-dev libopenal-dev libsdl2-2.0-0 libsdl2-dev xvfb
+
+    - name: Restore Dependencies
+      run: dotnet restore LightEngine.slnx
+
+    - name: Build Solution (Release)
+      run: dotnet build LightEngine.slnx -c Release --no-restore
+
+    - name: Run 9-Stage Full Verification Test Suite (Windows)
+      if: runner.os == 'Windows'
+      run: dotnet run --project LightEngine.Tests -c Release --no-build
+
+    - name: Run 9-Stage Full Verification Test Suite (Linux with Xvfb)
+      if: runner.os == 'Linux'
+      run: xvfb-run -a dotnet run --project LightEngine.Tests -c Release --no-build

@@ -1,0 +1,51 @@
+## ==============================================================================
+##   Light Engine - .gitignore
+## ==============================================================================
+
+# Build & Compilation outputs
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+dist/
+publish/
+
+# Visual Studio & IDE files
+.vs/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.DotSettings.user
+
+# ImGui & Editor state
+imgui.ini
+*.tmp
+*.temp
+
+# MonoGame Content Pipeline intermediate
+Content/bin/
+Content/obj/
+
+# Test results & Coverage
+TestResults/
+*.trx
+*.coverage
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+# Temporary scratch & prompt files
+scratch/
+*.bak
+*~
+screenshot.png
+editor_screenshot.png
+ui fix.txt
+C# Oyun Motoru Rehberi.txt
+*.txt
